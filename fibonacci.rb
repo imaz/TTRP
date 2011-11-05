@@ -3,10 +3,9 @@ require 'rspec'
 def fibonacci(count)
 	fib = 1
 	before = 0
-	for i in 1..count do
+	for i in 1...count do
 		fib += before
 		before = fib - before
-		p fib
 	end
 	fib
 end
