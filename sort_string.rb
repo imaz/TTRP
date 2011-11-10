@@ -12,6 +12,5 @@ end
 
 describe '#sort_string' do
   it { sort_string("Awesome I am").should eq "I am Awesome" }
-  #it { sort_string("No Ruby No Life").should eq "No No Ruby Life" }
   it { sort_string("No Ruby No Life").should eq "No Life Ruby" }
 end
