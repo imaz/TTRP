@@ -6,17 +6,19 @@ def check_sign(number)
     '#{number} is zero'
   elsif number.polar[1].eql? Math::PI
     '#{number} is negative'
+  else
+    '#{number} is positive'
   end
 end
 
 def check_sign2(number)
   case number<=>0
   when -1
-
+    '#{number} is negative'
   when 0
-
+    '#{number} is zero'
   when 1
-
+    '#{number} is positive'
   end
 end
 
