@@ -1,4 +1,4 @@
-def say(word,n)
+def say(word='m',n=1)
   n.times do
     `say -v #{Voice.choice()} #{word}`
   end
