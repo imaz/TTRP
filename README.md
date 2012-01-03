@@ -6,5 +6,5 @@ Rubyであそぶところ
 使い方
 
 ```
-ruby -e 'require("./say");say("Hello",4)'
+./say.rb
 ```

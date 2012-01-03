@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 def say(word='m',n=1)
   n.times do
     `say -v #{Voice.choice()} #{word}`
@@ -25,3 +26,5 @@ class Voice
     end
   end
 end
+
+say()
