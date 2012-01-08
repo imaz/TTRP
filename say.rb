@@ -14,23 +14,26 @@ class Say
 end
 
 class Voice
-  def Voice.choice
+  def self.choice
     voices = Dir.entries("/System/Library/Speech/Voices/")
     voices.shift(2)
     voices.map!{|v| v.sub(/.SpeechVoice/,'') }
-    self.filter(voices.sample)
+    filter(voices.sample)
   end
 
-  def Voice.filter(voice)
-    case voice
-    when 'GoodNews'
-      'Good'
-    when 'BadNews'
-      'Bad'
-    when 'Organ'
-      'Pipe'
-    else
-      voice
+  class << Voice
+    private
+    def filter(voice)
+      case voice
+      when 'GoodNews'
+        'Good'
+      when 'BadNews'
+        'Bad'
+      when 'Organ'
+        'Pipe'
+      else
+        voice
+      end
     end
   end
 end
