@@ -14,14 +14,14 @@ class Say
 end
 
 class Voice
-  def self.choice
-    voices = Dir.entries("/System/Library/Speech/Voices/")
-    voices.shift(2)
-    voices.map!{|v| v.sub(/.SpeechVoice/,'') }
-    filter(voices.sample)
-  end
-
   class << Voice
+    def choice
+      voices = Dir.entries("/System/Library/Speech/Voices/")
+      voices.shift(2)
+      voices.map!{|v| v.sub(/.SpeechVoice/,'') }
+      filter(voices.sample)
+    end
+
     private
     def filter(voice)
       case voice
