@@ -1,7 +1,15 @@
 #!/usr/bin/env ruby
-def say(word='m',n=1)
-  n.times do
-    `say -v #{Voice.choice()} #{word}`
+
+class Say
+  def initialize(word='',n=1)
+    @word = word
+    @n = n.to_i
+  end
+
+  def call()
+    @n.times do
+      `say -v #{Voice.choice()} #{@word}`
+    end
   end
 end
 
@@ -27,13 +35,5 @@ class Voice
   end
 end
 
-case ARGV.length
-when 0
-  say()
-when 1
-  say(ARGV)
-else
-  word, n = ARGV
-  say(word, n.to_i)
-end
-
+say = Say.new(*ARGV)
+say.call()
