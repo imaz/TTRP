@@ -13,8 +13,8 @@ class Voice
     self.filter(voices.sample)
   end
 
-  def Voice.filter(v)
-    case v
+  def Voice.filter(voice)
+    case voice
     when 'GoodNews'
       'Good'
     when 'BadNews'
@@ -22,9 +22,18 @@ class Voice
     when 'Organ'
       'Pipe'
     else
-      v
+      voice
     end
   end
 end
 
-say()
+case ARGV.length
+when 0
+  say()
+when 1
+  say(ARGV)
+else
+  word, n = ARGV
+  say(word, n.to_i)
+end
+
