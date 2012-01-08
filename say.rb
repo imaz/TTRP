@@ -35,5 +35,7 @@ class Voice
   end
 end
 
-say = Say.new(*ARGV)
-say.call()
+if __FILE__ == $0
+  say = Say.new(*ARGV)
+  say.call()
+end
