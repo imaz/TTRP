@@ -1,10 +1,13 @@
-Take The Red Pill :o
-
-Rubyであそぶところ
+#Rubyであそぶところ
+Take The Red Pill !
 
 ##say
-使い方
+ランダムボイスで指定した言葉を指定した回数sayする。
 
+
+####使用方法
 ```
-./say.rb
+./say.rb word 3
 ```
+
+　Ω<("word") Ω<("word") Ω<("word")
