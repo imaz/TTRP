@@ -7,9 +7,11 @@ def tree
 end
 
 def make_tree(gitFiles)
+  tree=[]
   gitFiles.each{|file|
-    file.each_with_index{|f,i| p ("  "*i)+f}
+    file.each_with_index.map{|f,i| tree << ("  "*i)+f}
   }
+  tree.uniq.map{|key|p key}
 end
 
 tree()
