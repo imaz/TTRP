@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-class Voice
+module Voice
   class << Voice
     def choice
       voices = Dir.entries("/System/Library/Speech/Voices/")
@@ -26,6 +26,8 @@ class Voice
 end
 
 class Say
+  include Voice
+
   def initialize(word='',n=1)
     @word = word
     @n = n.to_i
