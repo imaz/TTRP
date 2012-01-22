@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-class Say
-  def initialize(word='',n=1)
-    @word = word
-    @n = n.to_i
-  end
-
-  def call()
-    @n.times do
-      `say -v #{Voice.choice()} #{@word}`
-    end
-  end
-end
-
 class Voice
   class << Voice
     def choice
@@ -34,6 +21,19 @@ class Voice
       else
         voice
       end
+    end
+  end
+end
+
+class Say
+  def initialize(word='',n=1)
+    @word = word
+    @n = n.to_i
+  end
+
+  def call()
+    @n.times do
+      `say -v #{Voice.choice()} #{@word}`
     end
   end
 end
