@@ -17,7 +17,7 @@ def make_tree(gitFiles)
       tree << (tr + "  "*i + ee)+f
     }
   }
-  tree.uniq.map{|key|p key}
+  tree.uniq.map{|key|puts key}
 end
 
 tree()
