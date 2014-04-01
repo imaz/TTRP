@@ -35,7 +35,9 @@ class Say
 
   def call()
     @n.times do
-      `say -v #{Voice.choice()} #{@word}`
+      command = "say -v #{Voice.choice()} #{@word}"
+      `#{command}`
+      puts command
     end
   end
 end
