@@ -1,7 +1,7 @@
 require 'rspec'
 
 def age_span(age)
-  0 <= age or raise
+  raise if age < 0
 
   if 0 <= age && age <= 2
       'baby'
