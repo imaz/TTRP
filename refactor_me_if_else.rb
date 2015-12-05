@@ -3,16 +3,17 @@ require 'rspec'
 def age_span(age)
   raise if age < 0
 
-  if 0 <= age && age <= 2
-      'baby'
-  elsif 3 <= age && age <= 6
-      'little child'
-  elsif 7 <= age && age <= 12
-      'child'
-  elsif 13 <= age && age <= 18
-      'youth'
+  case age
+  when 0..2
+    'baby'
+  when 3..6
+    'little child'
+  when 7..12
+    'child'
+  when 13..18
+    'youth'
   else
-      'adult'
+    'adult'
   end
 end
 
