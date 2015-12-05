@@ -1,19 +1,27 @@
 require 'rspec'
 
 class Age
+  AGE_SPAN = {
+    baby: 0..2,
+    little_child: 3..6,
+    child: 7..12,
+    youth: 13..18,
+    adult: 19..Float::INFINITY
+  }
+
   def self.span(age)
     raise if age < 0
 
     case age
-    when 0..2
+    when AGE_SPAN[:baby]
       'baby'
-    when 3..6
+    when AGE_SPAN[:little_child]
       'little child'
-    when 7..12
+    when AGE_SPAN[:child]
       'child'
-    when 13..18
+    when AGE_SPAN[:youth]
       'youth'
-    else
+    when AGE_SPAN[:adult]
       'adult'
     end
   end
