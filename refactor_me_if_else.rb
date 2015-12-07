@@ -2,11 +2,11 @@ require 'rspec'
 
 class Age
   AGE_SPAN = {
-    'baby' => 0..2,
+    'baby'         => 0..2,
     'little child' => 3..6,
-    'child' => 7..12,
-    'youth' => 13..18,
-    'adult' => 19..Float::INFINITY
+    'child'        => 7..12,
+    'youth'        => 13..18,
+    'adult'        => 19..Float::INFINITY
   }
 
   def self.span(age)
@@ -16,7 +16,7 @@ class Age
   end
 end
 
-describe do
+describe 'Age.span' do
   it 'age がマイナス値の場合、例外を発生させること' do
     expect{Age.span(-1)}.to raise_error
   end
