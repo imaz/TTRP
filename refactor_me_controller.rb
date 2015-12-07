@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       self.current_user = @user
       redirect_to root_path
     else
-      flash[:alert] = "Login failed."
+      flash.now[:alert] = "Login failed."
       render :new
     end
   end
