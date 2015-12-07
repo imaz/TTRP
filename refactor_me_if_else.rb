@@ -10,7 +10,7 @@ class Age
   }
 
   def self.span(age)
-    raise if age < 0
+    raise ArgumentError if age < 0
 
     AGE_SPAN.find{|k, v| v.include? age }.first
   end
@@ -18,7 +18,7 @@ end
 
 describe 'Age.span' do
   it 'age がマイナス値の場合、例外を発生させること' do
-    expect{Age.span(-1)}.to raise_error
+    expect{Age.span(-1)}.to raise_error ArgumentError
   end
 
   it do
