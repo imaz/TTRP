@@ -1,19 +1,26 @@
+# mv app/assets/{,images/}message/admin.png
+# mv app/assets/{,images/}message/general.png
+
 # view
-<% if current_user.admin? %>
-  <%= current_user.message_for_admin(@message) %>
-<% else %>
-  <%= current_user.message_for_general(@message) %>
-<% end %>
+<%= @message.with_role_image(current_user) %>
 
 # app/models/user.rb
-def message_for_admin message
-  img_tag = '<img src="/assets/message/admin.png" />'
-  span_tag = "<span>#{message.body}</span>"
-  "<div>#{img_tag}#{span_tag}</div>"
+class User < ActiveRecord::Base
+  def role
+    admin? ? 'admin' : 'general'
+  end
 end
 
-def messsage_for_general message
-  img_tag = '<img src="/assets/message/general.png" />'
-  span_tag = "<span>#{message.body}</span>"
-  "<div>#{img_tag}#{span_tag}</div>"
+# app/decorators/user_decorator.rb
+module UserDecorator
+  def role_image
+    image_tag("message/#{role}.png")
+  end
+end
+
+# app/decorators/message_decorator.rb
+module MessageDecorator
+  def with_role_image(user)
+    content_tag(:div, user.role_image + content_tag(:span, message.body))
+  end
 end
