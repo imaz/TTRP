@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-  def signin
-    @user = User.find_by(email: params[:email])
+  def signin(email, password) # Use action_args
+    @user = User.find_by(email: email)
 
-    if @user.authenticate(params[:password])
+    if @user.authenticate(password)
       self.current_user = @user
       redirect_to root_path
     else
