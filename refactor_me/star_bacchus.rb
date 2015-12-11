@@ -11,17 +11,27 @@ require 'minitest/autorun'
 module StarBacchus
   class Menu
     def create(base, options = {})
+      @options = options
+
       if base == :latte && options[:milk] == :soy
         'ソイ スターバッカス ラテ'
-      elsif base == :latte && options[:hot] && options[:espresso] == :extrashot
+      elsif base == :latte && hot? && options[:espresso] == :extrashot
         'エクストラショット スターバッカス ラテ'
-      elsif base == :latte && options[:iced] && options[:espresso] == :extrashot
+      elsif base == :latte && iced? && options[:espresso] == :extrashot
         'アイス エクストラショット スターバッカス ラテ'
-      elsif base == :latte && options[:hot]
+      elsif base == :latte && hot?
         'スターバッカス ラテ'
-      elsif base == :latte && options[:iced]
+      elsif base == :latte && iced?
         'アイス スターバッカス ラテ'
       end
+    end
+
+    def hot?
+      @options[:hot]
+    end
+
+    def iced?
+      @options[:iced]
     end
   end
 end
