@@ -1,20 +1,7 @@
 def sort_lists(a, b)
-  a.sort!
-  b.sort!
-  b.size.times do |i|
-    a.size.times do |j|
-      x, y = a[j], b[i]
-      if y < x
-        a[j] = y
-        b[i] = x
-      else
-        next
-      end
-    end
-  end
-  b.sort!
+  c = [a, b].flatten.sort!
 
-  [a, b]
+  [c.shift(a.length), c.shift(b.length)]
 end
 
 require 'minitest/autorun'
