@@ -1,6 +1,6 @@
 class RequestToAnalyticsService
   def perform(data)
-    account           = Account.find(data[:account_id)
+    account           = Account.find(data[:account_id])
     analytics_client  = Analytics::Client.new(Settings.analytics_api_key])
 
     account_attributes = {
