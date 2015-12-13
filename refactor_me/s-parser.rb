@@ -1,21 +1,10 @@
 def parse(s)
-  read_from(tokenize(s))
-end
+  raise 'unexpected EOF while reading' if s.empty?
 
-def tokenize(s)
-  s.gsub('(', ' ( ').gsub(')', ' ) ').split
-end
-
-def read_from(tokens)
-  raise 'unexpected EOF while reading' if tokens.empty?
-  token = tokens.shift
-  if '(' == token
-    l = []
-    l << read_from(tokens) while tokens[0] != ')'
-    tokens.shift                # ')' を削除
-    l
-  else
-    token.to_sym
+  begin
+    eval s.tr('()','[]').gsub(/([\w\d])+/, ':\&,').gsub(']', '],').gsub(/, *(?=$)/, '')
+  rescue SyntaxError => e
+    raise e.message
   end
 end
 
