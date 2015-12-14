@@ -30,5 +30,6 @@ class TestParse < Minitest::Test
                  parse('(a (b c (d e) f))'))
 
     assert_raises { parse('(a b') }
+    assert_raises { parse('') }
   end
 end
