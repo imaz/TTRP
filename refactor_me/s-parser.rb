@@ -2,7 +2,10 @@ def parse(s)
   raise 'unexpected EOF while reading' if s.empty?
 
   begin
-    eval s.tr('()','[]').gsub(/([\w\d])+/, ':\&,').gsub(']', '],').gsub(/, *(?=$)/, '')
+    regexp_s = s.tr('()','[]').gsub(/([\w\d])+/, ':\&,').gsub(']', '],').gsub(/, *(?=$)/, '')
+    p regexp_s
+
+    eval regexp_s
   rescue SyntaxError => e
     raise e.message
   end
